@@ -1,0 +1,217 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    background-color: rgb(32, 33, 35);
+    overflow-x: hidden;
+}
+
+.custom-form {
+    background-color: #333
+}
+
+
+
+.content-wrap {
+    flex: 1;
+}
+
+nav {
+    background-color: #202123;
+    text-align: center;
+}
+
+.logout-btn:hover span{
+    display: none;
+}
+
+.logout-btn:hover:before {
+    content: "Logout?";
+}
+
+.navbar-brand {
+    padding-left: 12px;
+}
+
+.navbar-toggler {
+    margin-right: 15px;
+}
+
+.flashes {
+    color: #ff5b5b;
+}
+
+#mainPosts, #newPostHead, #steps, #newPostBox, .Posts {
+    padding-top: 10px;
+}
+
+#mainPosts {
+    padding-top: 10px;
+}
+
+#newPostHead, #steps {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+#newPostBox, .Posts {
+    background-color: rgb(47,56,63);
+    color: #fff;
+    border-radius: 5px;
+}
+
+#newPostBox {
+    flex: 1 0 auto;
+    padding: 20px;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.Posts {
+    border: 2px solid #333;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+}
+
+#standardBtn, #newPostbtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+#newPostbtn {
+    padding: 10px 20px;
+    margin-top: 210px;
+}
+
+.form-control, .form-select {
+    background-color: #ffffff;
+    color: black;
+    border-color: rgba(64, 79, 86, 255);
+}
+
+.tags-input-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px;
+    background: #007bff;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    color: white;
+    max-width: 100%;
+}
+
+.tag .remove-tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #035dbd;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 18px;
+    font-size: 12px; 
+    padding: 0; /
+}
+
+#tags-input {
+    flex: 1 0 auto;
+    min-width: 100px;
+    border: none;
+    background: transparent;
+    color: black;
+    margin-bottom: 5px;
+}
+
+#tags-input::placeholder {
+    color: #aaa;
+}
+
+.text-break, #steps, h1, #contact-us, #faqs,  #Sign-Up, .signUp, .form-label, .normtxt{
+    color: aliceblue;
+}
+
+.card-body {
+    background-color: #333;
+}
+
+
+
+.card .btn-close {
+    filter: invert();
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1000;
+    width: 30px;
+    height: 30px;
+    font-size: 20px; /* Increases the size of the icon */
+}
+
+.card {
+    position: relative; /* This makes the child position:absolute work as intended */
+    border: 2px solid rgb(38, 36, 36);
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+#footer {
+    flex-shrink: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.footer-text a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
