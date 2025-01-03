@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card">
+        
+        <div class="card-body">
+            <form class="custom-form add-exercise-form" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    <label for="exerciseName" class="form-label">Exercise Name</label>
+                    {{ form.name(class="form-control", id="exerciseName", placeholder="Name of exercise") }}
+                </div>
+                <div class="mb-3">
+                    <label for="muscleGroup" class="form-label">Muscle Group</label>
+                    {{ form.muscle_group(class="form-control", id="muscleGroup") }}
+                </div>
+                <div class="mb-3">
+                    <label for="hasWeight" class="form-label">Is Weighted:</label>
+                    {{ form.weighted(class="form-check-input", id="hasWeight", onclick="hideStartingWeight()", checked=True) }}
+                <div id="startingWeightBox" class="mb-3">
+                    <label for="weight" class="form-label">Starting Weight</label>
+                    {{ form.weight(class="form-control", id="weight", placeholder="Enter weight (kg)") }}
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
