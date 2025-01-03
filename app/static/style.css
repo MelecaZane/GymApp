@@ -12,10 +12,8 @@ body {
 }
 
 .custom-form {
-    background-color: #333
+    background-color: #333;
 }
-
-
 
 .content-wrap {
     flex: 1;
@@ -26,7 +24,7 @@ nav {
     text-align: center;
 }
 
-.logout-btn:hover span{
+.logout-btn:hover span {
     display: none;
 }
 
@@ -60,7 +58,7 @@ nav {
 }
 
 #newPostBox, .Posts {
-    background-color: rgb(47,56,63);
+    background-color: rgb(47, 56, 63);
     color: #fff;
     border-radius: 5px;
 }
@@ -133,8 +131,8 @@ nav {
     border-radius: 50%;
     font-weight: bold;
     line-height: 18px;
-    font-size: 12px; 
-    padding: 0; /
+    font-size: 12px;
+    padding: 0;
 }
 
 #tags-input {
@@ -150,15 +148,13 @@ nav {
     color: #aaa;
 }
 
-.text-break, #steps, h1, #contact-us, #faqs,  #Sign-Up, .signUp, .form-label, .normtxt{
+.text-break, #steps, h1, #contact-us, #faqs, #Sign-Up, .signUp, .form-label, .normtxt {
     color: aliceblue;
 }
 
 .card-body {
-    background-color: #333;
+    background-color: #202123;
 }
-
-
 
 .card .btn-close {
     filter: invert();
@@ -214,4 +210,28 @@ p {
 
 .footer-text a:hover {
     text-decoration: underline;
+}
+
+.card-header {
+    background-color: #212429;
+    color: white;
+}
+
+.card {
+    padding: 1rem;
+    background-color: #202123;
+}
+
+.exercise-link {
+    color: rgb(151, 148, 148);
+    text-decoration: none;
+}
+
+.exercise-link:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.add-exercise-form {
+    background-color: #202123;
 }

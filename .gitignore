@@ -172,3 +172,4 @@ cython_debug/
 
 # database
 app.db
+import_data.py

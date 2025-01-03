@@ -36,3 +36,13 @@ def add_exercise_page():
             flash("Error adding exercise!")
             print("ERROR ADDING EXERCISE")
             return redirect(url_for("add_exercise_page"))
+        
+@flask_app.route("/allExercises", methods=["GET", "POST"])
+def all_exercises_page():
+    muscle_groups = MuscleGroup.query.all()
+    exercises = {}
+    for muscle_group in muscle_groups:
+        exercises[muscle_group.name] = Exercise.query.filter_by(muscle_group_id=muscle_group.id).all()
+    return render_template("allExercises.html",
+                    title="All Exercises",
+                    exercises=exercises)
