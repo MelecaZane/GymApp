@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card">
+        
+        <div class="card-body">
+            <form class="custom-form exercise-details-form" method="POST">
+                {{ form.hidden_tag() }}
+                {{ form.id }}
+                <div class="mb-3">
+                    <label for="exerciseName" class="form-label">Exercise Name</label>
+                    {{ form.name(class="form-control", id="exerciseName", placeholder="Name of exercise") }}
+                </div>
+                <div class="mb-3">
+                    <label for="muscleGroup" class="form-label">Muscle Group</label>
+                    {{ form.muscle_group(class="form-control", id="muscleGroup") }}
+                </div>
+                {% if exercise.weighted %}
+                    <div class="mb-3">
+                        <label for="hasWeight" class="form-label">Is Weighted:</label>
+                        {{ form.weighted(class="form-check-input", id="hasWeight", onclick="hideStartingWeight()", checked=True) }}
+                    </div>
+                {% else %}
+                    <div class="mb-3">
+                        <label for="hasWeight" class="form-label">Is Weighted:</label>
+                        {{ form.weighted(class="form-check-input", id="hasWeight", onclick="hideStartingWeight()", checked=False) }}
+                    </div>
+                {% endif %}
+                {% if exercise.weighted %}
+                    <div id="startingWeightBox" class="mb-3">
+                        <label for="weight" class="form-label">Weight</label>
+                        {{ form.weight(class="form-control", id="weight", placeholder="Enter weight (kg)") }}
+                    </div>
+                {% else %}
+                    <div id="startingWeightBox" class="mb-3" style="display: none;">
+                        <label for="weight" class="form-label">Weight</label>
+                        {{ form.weight(class="form-control", id="weight", placeholder="Enter weight (kg)") }}
+                    </div>
+                {% endif %}
+                <div id="repPRBox" class="mb-3">
+                    <label for="repPR" class="form-label">Rep PR</label>
+                    {{ form.rep_pr(class="form-control", id="repPR", placeholder="Enter rep PR") }}
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
