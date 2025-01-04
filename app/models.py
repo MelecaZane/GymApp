@@ -12,4 +12,3 @@ class Exercise(db.Model):
     weight = db.Column(db.Float, default=0)
     rep_pr = db.Column(db.Integer, default=0)
     muscle_group_id = db.Column(db.Integer, db.ForeignKey("muscle_group.id"))
-

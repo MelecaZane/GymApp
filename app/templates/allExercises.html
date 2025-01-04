@@ -12,7 +12,7 @@
             <ul class="list-group">
                 {% for exercise in exercises[group] %}
                 <li class="list-group-item bg-dark text-white">
-                    <h6><a href="#" class="exercise-link">{{ exercise.name }}</a></h6>
+                    <h6><a href="{{ url_for('exercise_details_page', exercise_id=exercise.id) }}" class="exercise-link">{{ exercise.name }}</a></h6>
                 </li>
                 {% endfor %}
             </ul>

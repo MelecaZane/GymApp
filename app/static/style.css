@@ -232,6 +232,6 @@ p {
     text-decoration: none;
 }
 
-.add-exercise-form {
+.add-exercise-form, .exercise-details-form {
     background-color: #202123;
 }
