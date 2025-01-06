@@ -45,7 +45,7 @@ function addExerciseButton(){
    const button = document.createElement('button');
    button.type = 'button';
    button.classList.add('btn', 'btn-danger', 'w-100');
-   button.textContent = 'Remove';
+   button.textContent = '-';
    button.onclick = function() {
        newDiv.remove();
    };
@@ -93,7 +93,7 @@ function addMuscleGroupButton(){
    const button = document.createElement('button');
    button.type = 'button';
    button.classList.add('btn', 'btn-danger', 'w-100');
-   button.textContent = 'Remove';
+   button.textContent = '-';
    button.onclick = function() {
        newDiv.remove();
    };
@@ -146,4 +146,30 @@ function submitWorkout(){
           }
       }
   }
+}
+
+function updateExercise(exerciseId){
+    var data = document.getElementById(exerciseId + "-data").value;
+
+    var xhttp = new XMLHttpRequest();
+    postData = {
+        'id': exerciseId,
+        'data': parseFloat(data),
+        'workout': document.getElementById("WorkoutStorage").innerHTML
+    }
+    xhttp.open("POST", "/workoutDetails/" + exerciseId, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.setRequestHeader("X-CSRFToken", getCSRFToken());
+    xhttp.send(JSON.stringify(postData));
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            var response = JSON.parse(this.responseText);
+            if (this.status == 200 && response.success) {
+                window.location.href = response.redirect_url;
+            } else {
+                alert('Error: ' + response.error);
+            }
+        }
+    }
 }
