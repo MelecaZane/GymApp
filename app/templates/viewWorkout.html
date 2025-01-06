@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+
+<div id="WorkoutStorage" style="display: none;">{{ workout_id }}</div>
+
+<div class="container mt-5">
+    <div class="card mb-3">
+        <div class="card-header">
+            <h4 class="card-title">{{ title }}</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>EXERCISE</th>
+                            <th>MAX</th>
+                            <th>UPDATE</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-dark">
+                        {% for exercise in exercises %}
+                        <tr>
+                            <td>
+                                <h6><a href="{{ url_for('exercise_details_page', exercise_id=exercise.id) }}" class="exercise-link">{{ exercise.name }}</a></h6>
+                            </td>
+                            <td class="exercise-link">
+                                {% if exercise.weighted %}
+                                {{ exercise.weight }}
+                                {% else %}
+                                {{ exercise.rep_pr }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                <form>{{ form.hidden_tag() }}<input id="{{ exercise.id }}-data" type="number" class="form-control form-control-sm"></form>
+                                <button type="button" value="Submit" class="form-control form-control-sm" id="{{ exercise.id }}" onclick="updateExercise('{{ exercise.id }}')">Submit</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

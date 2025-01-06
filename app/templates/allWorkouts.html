@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+
+<div class="container d-flex justify-content-center mt-5">
+    <div class="mt-12  top-button">
+        <button type="button" class="btn btn-primary" onclick="window.location.href='{{ url_for('add_workout_page') }}'">Add New Custom Workout</button>
+    </div>
+</div>
+
+<div class="container mt-1">
+    {% for workout in workouts %}
+    <div class="row justify-content-center mb-1">
+        <div class="col-md-10">
+            <div class="card workout-card">
+                <div class="card-header">
+                    <h4 class="card-title"><a href="{{ url_for('view_workout_page', workout_id=workout.id) }}" class="exercise-link">{{ workout.name }}</a></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

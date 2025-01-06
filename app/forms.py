@@ -24,3 +24,6 @@ class UpdateExerciseForm(FlaskForm):
         if muscle_group:
             self.muscle_group.default = muscle_group
             self.process()
+
+class AddWorkoutForm(FlaskForm):
+    name = StringField("Workout Name", validators=[DataRequired()])
