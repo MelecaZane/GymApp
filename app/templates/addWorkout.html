@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <div id="ExerciseStorage" style="display: none;">
+        {% for exercise in exercises %}
+            <div class="exercise">
+                <h6 id="{{ exercise[0] }}">{{ exercise[1] }}</h6>
+            </div>
+        {% endfor %}
+    </div>
+    <div id="MuscleGroupStorage" style="display: none;">
+        {% for group in muscle_groups %}
+            <div class="muscle-group">
+                <h6 id="{{ group[0] }}">{{ group[1] }}</h6>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form class="custom-form add-exercise-form" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="row">
+                        <label for="workoutName" class="form-label>">Workout Name</label>
+                        <input type="text" class="form-control" id="workoutName" placeholder="Name of workout">
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-primary w-100" onclick="addExerciseButton()">Add Exercise</button>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-primary w-100" onclick="addMuscleGroupButton()">Add Muscle Group</button>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-end mt-3">
+                    <div class="col-2">
+                        <button type="button" class="btn btn-primary" onclick="submitWorkout()">Submit Workout</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

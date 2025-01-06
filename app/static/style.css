@@ -235,3 +235,8 @@ p {
 .add-exercise-form, .exercise-details-form {
     background-color: #202123;
 }
+
+.top-button {
+    padding: 1rem;
+    
+}

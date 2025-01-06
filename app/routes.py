@@ -1,9 +1,10 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, jsonify
 from app import flask_app
 from app import db
-from app.models import MuscleGroup, Exercise
-from app.forms import AddExerciseForm, UpdateExerciseForm
+from app.models import MuscleGroup, Exercise, Workout
+from app.forms import AddExerciseForm, UpdateExerciseForm, AddWorkoutForm
 from werkzeug.datastructures import MultiDict
+import json
 
 @flask_app.route("/", methods=["GET", "POST"])
 @flask_app.route("/index.html", methods=["GET", "POST"])
@@ -86,3 +87,37 @@ def exercise_details_page(exercise_id):
             print("ERROR ADDING EXERCISE")
             print(form.errors)
             return redirect(url_for("all_exercises_page"))
+        
+@flask_app.route("/allWorkouts", methods=["GET"])
+def all_workouts_page():
+    return render_template("allWorkouts.html",
+                            title="All Workouts")
+
+@flask_app.route("/addWorkout", methods=["GET", "POST"])
+def add_workout_page():
+    if request.method == "GET":
+        exercises = Exercise.query.all()
+        exercise_choices = [(exercise.id, exercise.name) for exercise in exercises]
+        muscle_groups = MuscleGroup.query.all()
+        muscle_group_choices = [(muscle_group.id, muscle_group.name) for muscle_group in muscle_groups]
+
+        return render_template("addWorkout.html",
+                                title="Add Workout",
+                                exercises=exercise_choices,
+                                muscle_groups=muscle_group_choices,
+                                form=AddWorkoutForm())
+    
+    if request.method == "POST":
+        workout_details = request.json
+        order = workout_details["order"]
+        order = [str(x) for x in order]
+        exercises = [Exercise.query.get(x) for x in workout_details["exercises"]]
+        groups = [MuscleGroup.query.get(x) for x in workout_details["groups"]]
+
+        new_workout = Workout(name=workout_details["name"],
+                                exercises=exercises,
+                                muscle_groups=groups,
+                                order=''.join(order))
+        db.session.add(new_workout)
+        db.session.commit()
+        return jsonify({"success": True, "redirect_url": url_for('all_workouts_page')}), 200
